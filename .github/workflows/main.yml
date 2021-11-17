@@ -6,12 +6,12 @@ jobs:
     name: A job to say hello
     steps:
       - name: checkout
-        uses: actions/checkout@v2 # This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
+        uses: actions/checkout@v2 # $GITHUB_WORKSPACE
       - name: Hello world action step
-        uses: ./ # Uses an action in the root directory
         id: hello
         uses: ./
         with:
           who-to-greet: 'Marcos Monteiro'
+      # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
